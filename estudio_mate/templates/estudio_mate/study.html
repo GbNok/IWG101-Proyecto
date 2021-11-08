@@ -1,0 +1,20 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
+<body>
+    {% if problems %}
+        <h1>  {{subject}} </h1>
+        <ul>
+            {% for problem in problems %}
+            <li>
+                {{ problem.statement }} 
+                <a href="/estudio-mate/{{ subject_id }}/problems/{{ problem.id }}"> Ver respuesta </a> 
+            </li>
+            {% endfor %}
+
+        </ul>
+    {% else %}
+        <p>No problems are available.</p>
+    {% endif %}
+    <a href="/estudio-mate/"> Volver al inicio </a> 
+</body>

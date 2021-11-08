@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
+<body>
+
+    {% if subjects %}
+        <h1> Bienvenido. Seleccione una materia para estudiar </h1>
+        <ul>
+            {% for subject in subjects %}
+            <li><a href="/estudio-mate/{{ subject.id }}/">{{ subject.tittle }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No subjects are available.</p>
+    {% endif %}
+    
+</body>

@@ -1,0 +1,26 @@
+h1 {
+    color: black;
+    font-size: 30px;
+    text-align: center;
+    font-family: Verdana;
+}
+
+
+p {
+    text-align: center;
+    font-size: 30px;
+    color: black;
+}
+
+
+
+a {
+    color: green;
+    font-size: 20px;
+}
+
+
+body {
+    background: white   url("images/background.gif");
+    font-size: 25px;
+}
