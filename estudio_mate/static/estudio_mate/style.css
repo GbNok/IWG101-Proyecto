@@ -1,26 +1,30 @@
 h1 {
-    color: black;
+    color: red;
     font-size: 30px;
     text-align: center;
     font-family: Verdana;
+    background-color: green;
 }
 
 
-p {
-    text-align: center;
+p.select {
+    text-align: justify;
     font-size: 30px;
     color: black;
 }
 
 
-
-a {
-    color: green;
-    font-size: 20px;
+a.goback {
+    color: Red;
+    font-size: 25px;
+    text-decoration-line: none;
 }
 
+li {
+    list-style: none;
+    text-align:start;
+}
 
 body {
-    background: white   url("images/background.gif");
-    font-size: 25px;
+    font-size: 40px;
 }

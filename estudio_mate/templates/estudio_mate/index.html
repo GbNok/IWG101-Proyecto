@@ -4,8 +4,10 @@
 <body>
 
     {% if subjects %}
-        <h1> Bienvenido. Seleccione una materia para estudiar </h1>
+        <h1> Bienvenido. </h1>
         <ul>
+            <p class="select"> Seleccione una materia para estudiar </p>
+            
             {% for subject in subjects %}
             <li><a href="/estudio-mate/{{ subject.id }}/">{{ subject.tittle }}</a></li>
             {% endfor %}
