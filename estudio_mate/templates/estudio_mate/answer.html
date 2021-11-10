@@ -1,17 +1,19 @@
 {% load static %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
+<title> Ejercicios mate - Respuestas </title>
 <body>
 
     {% if answer %}
-        <h1> Respuesta </h1> 
+        <h1> {{subject}} </h1> 
         <p>
-            {{problem}} = {{ answer }} 
+            Respuesta: <br><br>  {{ answer }} 
             </p>
-
-            <a class="goback" href="/estudio-mate/"> Volver al inicio </a> <br> 
-            <a class="goback" href="/estudio-mate/{{ subject_id }}/">  Vovlver a los problemas </a> 
+            <img src="/static/estudio_mate/images/problems/{{  answer }}" alt="My image"/>
+            <br><br>
     {% else %}
         <p>No answers are available.</p>
     {% endif %}
+    <a  href="/estudio-mate/"> Volver al inicio </a> <br> 
+    <a  href="/estudio-mate/{{ subject_id }}/">  Vovlver a los problemas </a> 
 </body>
