@@ -14,8 +14,6 @@ def study(request, subject_id):
     return render(request, "estudio_mate/study.html", context)
 
 def problem(request, subject_id, problem_id):
-    subject = Subject.objects.get(id=subject_id) 
-    answer = Problem.objects.get(id=problem_id).answer 
-    problem = Problem.objects.get(id=problem_id).statement
-    context = {"subject_id": subject_id, "answer": answer, "problem": problem, "subject": subject}
+    problem = Problem.objects.get(id=problem_id)
+    context = {"subject_id": subject_id, "problem": problem}
     return render(request, "estudio_mate/answer.html", context)

@@ -1,3 +1,9 @@
+div.col h1{
+    font-size: 50px;
+    text-align: center;
+    font-family:fantasy;
+}
+
 h1 {
     font-size: 50px;
     text-align: center;
@@ -9,10 +15,21 @@ label {
     background-color: white;
     
 }
-
-p {
+div.col a {
+    font-size: 20px;
+    list-style: none;
+    text-decoration: none;
+    color: black; 
+}
+.subject_title {
     font-size: 40px;
     text-decoration: underline dotted;
+    text-align: center;
+}
+
+.problem {
+    width: 20%;
+    height: auto;
 }
 
 li  {
@@ -24,14 +41,18 @@ li  {
     list-style:disc;
 }
 
-a {
-    font-size: 30px;
+a.answerbutton {
+    font-size: 15px;
     list-style: none;
     text-decoration: none;
     color: black;
 }
 
 body {
-    font-size: 60px;
+    font-size: 200%;
 }
 
+.cool {
+    font-size: 30px;
+
+}

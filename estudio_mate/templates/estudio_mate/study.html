@@ -1,22 +1,44 @@
 {% load static %}
-
-<link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
-<title> Estudios mate - Ejercicios {{subject}} </title>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title> Estudios mate - Ejercicios {{subject}} </title>
+</head>
 <body>
-    {% if problems %}
-        <h1>  Estudios mate </h1>
-        <ul>
-            <p> {{subject}} </p>
-            {% for problem in problems %}
-                <label> {{ problem.statement }} </label> <br> 
-                <img src="/static/estudio_mate/images/problems/{{  problem.statement }}" alt="My image"/>
-                <a  href="/estudio-mate/{{ subject_id }}/problems/{{ problem.id }}"> &nbsp;&nbsp;&nbsp;Ver respuesta </a> 
-                <br> <br>
-            {% endfor %}
+{% if problems %}
+    <div class="container"> 
+        <div class="row">
+            <div class="col">
+                <a  href="/estudio-mate/"> Volver al inicio </a> 
+            </div>
+            <div class="col-7">  
+                <h1> Estudios mate </h1> 
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <ul>
+        <br>
+        <div class="subject_title"> {{subject}} </div> <br>
+        
+        <div class="row">
+        {% for problem in problems %}
+            <div class="col g-3">
+                <div class="card" style="width: 15rem;">
+                    <img class="problem" style="width: 100%; height: auto;" src="/static/estudio_mate/images/problems/{{  problem.statement }}" alt="My image"/>
+                    <dif class="card-body">
+                        <h4 class="card-title"> {{ problem.statement }} </h4>
+                        <a  class="btn btn-info" href="/estudio-mate/{{ subject_id }}/problems/{{ problem.id }}"> &nbsp;&nbsp;&nbsp;Ver respuesta </a> 
+                    </dif>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
 
-        </ul>
-    {% else %}
-        <p>No problems are available.</p>
-    {% endif %}
-    <a  href="/estudio-mate/"> Volver al inicio </a> 
+    </ul>
+{% else %}
+    <p>No problems are available.</p>
+{% endif %}
 </body>
+</html>
