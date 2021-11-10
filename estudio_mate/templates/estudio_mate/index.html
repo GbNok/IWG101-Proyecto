@@ -7,19 +7,25 @@
     <title> Estudios mate </title>
 </head>
 
-<body>
+<body class="bg-info">
 {% if subjects %}
-    <h1> Bienvenido a estudios mate </h1>
+
+    <nav class="navbar navbar-primary bg-primary">
+        <div class="container-fluid" >
+            <h1 class="navbar-brand"> Estudios mate </h1>
+        </div>
+    </nav>
+
     <ul>
         <div class="cool"> Seleccione una materia para estudiar </div> <br>
         <div class="row g-3">
         {% for subject in subjects %}
             <div class="col">
-                <div class="card bg-info" style="width: 18rem;">
+                <div class="card bg-primary" style="width: 18rem;">
                     <img style="width: 100%; height: auto;" src="/static/estudio_mate/images/subjectP/{{ subject.tittle }}.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title"> {{subject.tittle}} </h5>
-                        <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-primary"> Seleccionar</a>
+                                <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-danger"> Seleccionar</a>   
                     </div>
                 </div>
             </div>
