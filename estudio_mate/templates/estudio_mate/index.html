@@ -25,7 +25,19 @@
                     <img style="width: 100%; height: auto;" src="/static/estudio_mate/images/subjectP/{{ subject.tittle }}.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h4 class="card-title"> {{subject.tittle}} </h5>
-                                <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-danger"> Seleccionar</a>   
+                        <p>
+                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                              Seleccionar
+                            </a>
+                        </p>
+                            <div class="collapse" id="collapseExample" style="width: 18rem;">
+                                <div>
+                                    <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-danger"> 
+                                        Go
+                                    </a>  
+                                </div>
+                            </div>
+                        
                     </div>
                 </div>
             </div>
