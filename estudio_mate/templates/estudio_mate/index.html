@@ -17,7 +17,8 @@
     </nav>
 
     <ul>
-        <div class="cool"> Seleccione una materia para estudiar </div> <br>
+        <h1 style="text-align: center;"> Seleccione una materia para estudiar </h1> <br>
+        
         <div class="row g-3">
         {% for subject in subjects %}
             <div class="col">
@@ -26,21 +27,15 @@
                     <div class="card-body">
                         <h4 class="card-title"> {{subject.tittle}} </h4>
                         <p>
-                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#{{subject}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                               Seleccionar
                             </a>
                         </p>
-                        <div class="collapse" id="collapseExample" style="width: 200px;">
+                        <div class="collapse" id="{{subject}}" style="width: 200px;">
                             <div class="card card-body bg-info">
                                 <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-danger"> Go</a>                           
                             </div>
                         </div>
-
-
-
-
-
-
 
                     </div>
                 </div>
