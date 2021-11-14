@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from .models import Subject, Problem
 from django.shortcuts import render
+from .funciones import generate_problems
 
 def index(request):
     subjects = Subject.objects.all()
@@ -8,8 +9,11 @@ def index(request):
     return render(request, "estudio_mate/index.html", context)
 
 def study(request, subject_id):
+    how_many = request.GET["e"]
+    print(how_many)
     subject = Subject.objects.get(id=subject_id)
     problems = subject.problem_set.all()
+    problems = generate_problems(problems, int(how_many))
     context = {"problems": problems, "subject_id": subject_id, "subject": subject}
     return render(request, "estudio_mate/study.html", context)
 

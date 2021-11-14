@@ -7,36 +7,39 @@
     <title> Estudios mate </title>
 </head>
 
-<body class="bg-info">
+<body>
 {% if subjects %}
 
-    <nav class="navbar navbar-primary bg-primary">
+    <nav class="navbar navbar-secondary bg-secondary">
         <div class="container-fluid" >
-            <h1 class="navbar-brand"> Estudios mate </h1>
+            <h1 style="text-align: center;" class="navbar-brand"> PasaMate </h1>
         </div>
     </nav>
 
+    <h1 style="text-align: center;"> Selecciona una materia para estudiar </h1> 
+    <div style="text-align: center;"> Bienvenido a PasaMate. <br> Te dejamos aqui opciones para que elijas las materias que necesitas estudiar. Selecciona la categoria y elige la cantidad de preguntas. Recuerda iniciar tu sesión para guardar ejercicios!</div> <br>
     <ul>
-        <h1 style="text-align: center;"> Seleccione una materia para estudiar </h1> <br>
-        
-        <div class="row g-3">
+    
+        <div class="row g-5">
         {% for subject in subjects %}
             <div class="col">
-                <div class="card bg-primary" style="width: 18rem;">
-                    <img style="width: 100%; height: auto;" src="/static/estudio_mate/images/subjectP/{{ subject.tittle }}.png" class="card-img-top" alt="...">
+                <div class="card bg-secondary" style="width: 18rem; height: auto;">
                     <div class="card-body">
-                        <h4 class="card-title"> {{subject.tittle}} </h4>
-                        <p>
-                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#{{subject}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                              Seleccionar
-                            </a>
-                        </p>
-                        <div class="collapse" id="{{subject}}" style="width: 200px;">
-                            <div class="card card-body bg-info">
-                                <a href="/estudio-mate/{{ subject.id }}/" class="btn btn-danger"> Go</a>                           
-                            </div>
+                    <h4 style="text-align: center;" class="card-title"> {{subject.tittle}} </h4>
+                    <img style="width: 100%; height: auto;" src="/static/estudio_mate/images/subjectP/{{ subject.tittle }}.png" class="card-img-top" alt="..."> <br><br>
+                    <p style="text-align: center;">
+                        <a class="btn btn-danger text-light" data-bs-toggle="collapse" href="#{{subject}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Seleccionar
+                        </a>
+                    </p>
+                    <div class="collapse" id="{{subject}}" style="width: 200px; text-align: center;">
+                        <div class="card card-body bg-secondary">
+                            <form action="/estudio-mate/{{subject.id}}/" method="get"> {% csrf_token %}
+                                <input type="text" name="e" placeholder="Cantidad preguntas"/><br><br>
+                                <input type="submit" value="go" class="btn btn-danger" />
+                            </form>
                         </div>
-
+                    </div>
                     </div>
                 </div>
             </div>

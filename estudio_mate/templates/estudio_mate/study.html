@@ -2,47 +2,44 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'estudio_mate/style.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <title> Estudios mate - Ejercicios {{subject}} </title>
 </head>
-<body class="bg-info">
-{% if problems %}
-    <nav class="navbar navbar-primary bg-primary">
+<body>
+    <nav class="navbar navbar-secondary bg-secondary">
         <div class="container-fluid">
-            <h1 class="navbar-brand"> Estudios mate</h1>
+            <h1 class="navbar-brand"> PasaMate</h1>
             <a href="/estudio-mate/"> 
                 <img style="width: 40px; height: auto;" src="/static/estudio_mate/images/home.png/">
             </a>
         </div>
     </nav>    
+    {% if problems %}
+    <div class="subject_title"> {{subject}} </div> <br>
     <ul>
         <br>
-        <div class="subject_title"> {{subject}} </div> <br>
         
-        <div class="row">
+        <div class="row g-3">
         {% for problem in problems %}
-            <div class="col g-3">
-                <div class="card bg-primary" style="width: 15rem;">
+            <div class="col">
+                <div class="card bg-secondary" style="width: 15rem;">
+                    <div class="card-body">
                     <img class="problem" style="width: 100%; height: auto;" src="/static/estudio_mate/images/problems/{{  problem.statement }}" alt="My image"/>
-                    <dif class="card-body">
-                        <h4 class="card-title"> {{ problem.statement }} </h4>
-                        
-                        <a  class="btn btn-danger" href="/estudio-mate/{{ subject_id }}/problems/{{ problem.id }}"> Ir a Respuesta </a> <br><br>
-
-                        <p>
-                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                              Ver Respuesta
-                            </a>
-                        </p>
-                        <div class="collapse" id="collapseExample" style="width: 200px;">
-                            <div class="card card-body">
-                                <img src="/static/estudio_mate/images/problems/{{problem.answer}}">
-                            </div>
+                    <h4 class="card-title"> {{ problem.statement }} </h4>    
+                    <a  class="btn btn-danger text-light" href="/estudio-mate/{{ subject_id }}/problems/{{ problem.id }}"> Ir a Respuesta </a> <br><br>
+                    <p style="text-align: center;">
+                        <a class="btn btn-danger text-light" data-bs-toggle="collapse" href="#problem" role="button" aria-expanded="false" aria-controls="collapseExample">
+                          Ver Respuesta
+                        </a>
+                    </p>
+                    <div class="collapse" id="problem" style="width: 200px; text-align: center;">
+                        <div class="card card-body bg-secondary">
+                            <img src="/static/estudio_mate/images/problems/{{problem.answer}}">   
                         </div>
-
-
-                    </dif>
+                    </div>                       
+                        
+                    </div>
                 </div>
             </div>
         {% endfor %}
