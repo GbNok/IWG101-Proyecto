@@ -9,8 +9,7 @@ def index(request):
     return render(request, "estudio_mate/index.html", context)
 
 def study(request, subject_id):
-    how_many = request.GET["e"]
-    print(how_many)
+    how_many = request.GET["e"] 
     subject = Subject.objects.get(id=subject_id)
     problems = subject.problem_set.all()
     problems = generate_problems(problems, int(how_many))
