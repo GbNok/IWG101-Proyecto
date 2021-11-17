@@ -18,6 +18,6 @@ from django.urls import path
 from django.urls.conf import include
 
 urlpatterns = [
-    path("estudio-mate/", include("estudio_mate.urls")),
+    path("", include("estudio_mate.urls")),
     path('admin/', admin.site.urls),
 ]

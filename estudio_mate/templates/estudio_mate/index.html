@@ -34,7 +34,7 @@
                     </p>
                     <div class="collapse" id="{{subject}}" style="width: 200px; text-align: center;">
                         <div class="card card-body bg-secondary">
-                            <form action="/estudio-mate/{{subject.id}}/" method="get"> {% csrf_token %}
+                            <form action="/{{subject.id}}/" method="get"> {% csrf_token %}
                                 <input type="text" name="e" placeholder="Cantidad preguntas"/><br><br>
                                 <input type="submit" value="go" class="btn btn-danger" />
                             </form>
