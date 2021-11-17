@@ -27,18 +27,18 @@
             <div class="col">
                 <div class="card bg-secondary" style="width: 15rem;">
                     <div class="card-body">
-                    <img class="problem" style="width: 100%; height: auto;" src="/static/estudio_mate/images/problems/{{  problem.statement }}" alt="My image"/>
+                    <img class="problem" style="width: 100%; height: auto;" src="/static/estudio_mate/images/problems/{{  problem.statement }}.png" alt="My image"/>
                     <h4 class="card-title"> {{ problem.statement }} </h4>    
                     <a  class="btn btn-danger text-light" href="/{{ subject_id }}/problems/{{ problem.id }}"> Ir a Respuesta </a> <br><br>
 
                     <p style="text-align: center;">
-                        <a class="btn btn-danger text-light" data-bs-toggle="collapse" href="#{{problem}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        <a class="btn btn-danger text-light" data-bs-toggle="collapse" href="#a-{{problem.statement}}" role="button" aria-expanded="false" aria-controls="collapseExample">
                             Ver Respuesta
                           </a> 
                     </p>
-                    <div class="collapse" id="{{problem}}" style="width: 200px; text-align: center;">
+                    <div class="collapse" id="a-{{problem.statement}}" style="width: 200px; text-align: center;">
                         <div class="card card-body bg-secondary">
-                            <img src="/static/estudio_mate/images/problems/{{problem.answer}}">   
+                            <img src="/static/estudio_mate/images/problems/{{problem.answer}}.png">   
                         </div>
                     </div>                       
                     
