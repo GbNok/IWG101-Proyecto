@@ -11,14 +11,14 @@
 <body>
     <nav class="navbar navbar-secondary bg-secondary">
         <div class="container-fluid">
-            <h1 class="navbar-brand"> PasaMate</h1>
+            <h1 class="navbar-brand text-light"> PasaMate</h1>
             <a href="/"> 
                 <img style="width: 40px; height: auto;" src="/static/estudio_mate/images/home.png/">
             </a>
         </div>
     </nav>    
     {% if problems %}
-    <div class="subject_title"> {{subject}} </div> <br>
+    <div class="subject_title text-light"> {{subject}} </div> <br>
     <ul>
         <br>
         
@@ -28,8 +28,7 @@
                 <div class="card bg-secondary" style="width: 15rem;">
                     <div class="card-body">
                     <img class="problem" style="width: 100%; height: auto;" src="/static/estudio_mate/images/problems/{{  problem.statement }}.png" alt="My image"/>
-                    <h4 class="card-title"> {{ problem.statement }} </h4>    
-                    <a  class="btn btn-danger text-light" href="/{{ subject_id }}/problems/{{ problem.id }}"> Ir a Respuesta </a> <br><br>
+                    <br><br>
 
                     <p style="text-align: center;">
                         <a class="btn btn-danger text-light" data-bs-toggle="collapse" href="#a-{{problem.statement}}" role="button" aria-expanded="false" aria-controls="collapseExample">
