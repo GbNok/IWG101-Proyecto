@@ -7,37 +7,23 @@
     <title> Ejercicios mate - Respuestas </title>
 </head>
 <body class="bg-info">
-    <nav class="navbar navbar-primary bg-primary">
+    <nav class="navbar navbar-secondary bg-secondary">
         <div class="container-fluid">
-            <h1 class="navbar-brand"> Estudios mate</h1>
-            <a href="/estudio-mate/"> 
+            <h1 class="navbar-brand text-light"> PasaMate</h1>
+            <a href="/"> 
                 <img style="width: 40px; height: auto;" src="/static/estudio_mate/images/home.png/">
             </a>
         </div>
-    </nav> 
+    </nav>    
 
-    <div class="subject_title"> {{problem.subject}} </div>  <br>
-    <ul>
-    {% if problem.answer %}
-        <div style="font-size: 20px;">
-            Respuesta: <br><br>  {{ problem.answer }} 
-        </div> <br>
-        <img  class="problem" src="/static/estudio_mate/images/problems/{{  problem.answer }}" alt="My image"/>
-        <br><br>
-        </ul>
-    {% else %}
-        <p>No answers are available.</p>
-    {% endif %}
-    <a class="btn btn-primary" href="/estudio-mate/{{ subject_id }}/" role="button"> Volver a los problemas</a> 
-    <p>
-        <a class="btn btn-danger" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-          Link with href
-        </a>
-      </p>
-      <div class="collapse" id="collapseExample" style="width: 200px;">
-        <div class="card card-body">
-            <a class="btn btn-primary" href="/estudio-mate/{{ subject_id }}/" role="button"> Volver a los problemas</a> 
-        </div>
+    <div> 
+        <h3 style="color :white" >problema </h1> <br>
+        <img src="/static/estudio_mate/images/problems/{{problem}}.png">
+    </div>
+
+      <div>
+          <a class="btn btn-danger text-light" href="/{{subject_id}}/problems/{{problem.id}}/submit/"> subir desarrollo </a>
       </div>
+
 </body>
 </html>

@@ -1,0 +1,81 @@
+{% extends "admin/login.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'microsoft/css/login.css' %}" />
+  {{ form.media }}
+{% endblock %}
+
+{% block content %}
+
+  {% if form.errors and not form.non_field_errors %}
+    <p class="errornote">
+      {% if form.errors.items|length == 1 %}
+        {% trans "Please correct the error below." %}
+      {% else %}
+        {% trans "Please correct the errors below." %}
+      {% endif %}
+    </p>
+  {% endif %}
+
+  {% if form.non_field_errors %}
+    {% for error in form.non_field_errors %}
+      <p class="errornote">
+        {{ error }}
+      </p>
+    {% endfor %}
+  {% endif %}
+
+  <div id="content-main">
+    {% if user.is_authenticated %}
+      <p class="errornote">
+        {% blocktrans trimmed %}
+          You are authenticated as {{ username }}, but are not authorized to
+          access this page. Would you like to login to a different account?
+        {% endblocktrans %}
+      </p>
+    {% endif %}
+
+    {% if microsoft_login_enabled %}
+      <div class="center">
+        <p>{% trans 'Log in with' %}</p>
+        <div class="container">
+          <div>
+            <button id="microsoft-login" class="button" type="button">Outlook @usm.cl</button>
+          </div>
+          
+          <div>
+            <button id="password-login" class="hidden" type="button">{% trans 'Password' %}</button>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    <div id="login-container" class="{% if microsoft_login_enabled %}hide{% endif %}">
+      <form action="{{ app_path }}" method="post" id="login-form">
+        {% csrf_token %}
+
+        
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {{ block.super }}
+
+  {% if microsoft_login_enabled %}
+    <script type="text/javascript" src="{% static 'microsoft/js/login.js' %}"></script>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",
+                              function(event) {
+                                window.microsoft.login = new window.microsoft.objects.LoginController({
+                                  'authorization_url': '{{ microsoft_authorization_url }}'
+                                });
+                              });
+    </script>
+  {% endif %}
+{% endblock %}

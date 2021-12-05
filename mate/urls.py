@@ -20,4 +20,5 @@ from django.urls.conf import include
 urlpatterns = [
     path("", include("estudio_mate.urls")),
     path('admin/', admin.site.urls),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft'))
 ]
