@@ -18,6 +18,8 @@ django==3.2.9
     # via
     #   -r requirements.in
     #   django-microsoft-auth
+django-dotenv==1.4.2
+    # via -r requirements.in
 django-microsoft-auth==2.4.1
     # via -r requirements.in
 idna==3.3
