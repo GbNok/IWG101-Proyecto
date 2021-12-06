@@ -13,7 +13,9 @@ def index(request):
 
 
 def study(request, subject_id):
-    how_many = request.GET["e"] 
+    how_many = request.GET["e"]
+    if how_many == "":
+        how_many = 0 
     subject = Subject.objects.get(id=subject_id)
     problems = subject.problem_set.all()
     problems = generate_problems(problems, int(how_many))
@@ -29,10 +31,13 @@ def solutions(request, subject_id, problem_id):
 @login_required(login_url='/accounts/login/')
 def upload_problem(request, subject_id, problem_id):
     if request.method == 'POST':
-        uploaded_file = request.FILES['solution']
-        form = Solution(problem=problem_id, solution_file=uploaded_file)
-        form.save()
-        return HttpResponseRedirect(f'/{subject_id}/problems/{problem_id}/')
+        try:
+            uploaded_file = request.FILES['solution']
+            form = Solution(problem=problem_id, solution_file=uploaded_file)
+            form.save()
+            return HttpResponseRedirect(f'/{subject_id}/problems/{problem_id}/')
+        except:
+            return HttpResponseRedirect(f'/{subject_id}/problems/{problem_id}/')
     return render(request, 'estudio_mate/submit.html')
 
 @login_required(login_url='/accounts/login/')
