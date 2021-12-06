@@ -15,3 +15,8 @@ class Problem(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     answer = models.CharField(max_length=200)
 
+class Solution(models.Model):
+    problem = models.CharField(max_length=200)
+    solution_file = models.FileField()
+    def __str__(self):
+        return self.problem

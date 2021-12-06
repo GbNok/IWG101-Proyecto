@@ -1,5 +1,17 @@
 {% extends "estudio_mate/base.html" %}
 {% block content %}
+<br>
+<div class="card mx-auto" style="width: 30rem;">
+    <div class="input-group mb-3">
+        <form  method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input class="form-control" type="file" name="solution">
+            <button class="btn btn-outline-secondary" type="submit"> subir desarrollo </button>
+            <button class="btn btn-outline-secondary" type="reset">borrar</button>
+        </form>
+    </div>   
+</div>
+
 
 <div>            
     <a href="{% url 'logout' %}"> cerrar sesion </a>

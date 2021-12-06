@@ -1,20 +1,16 @@
-from .models import Subject, Problem
+from .models import Subject, Problem, Solution
 from django.shortcuts import render
 from .funciones import generate_problems
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from .forms import ProblemUpload
-
-def handle_uploaded_file(f):
-    with open('/static/estudio_mate/images/solution', 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
 
 
 def index(request):
     subjects = Subject.objects.all()
     context = {"subjects": subjects}
     return render(request, "estudio_mate/index.html", context)
+
+
 
 def study(request, subject_id):
     how_many = request.GET["e"] 
@@ -24,23 +20,24 @@ def study(request, subject_id):
     context = {"problems": problems, "subject_id": subject_id, "subject": subject}
     return render(request, "estudio_mate/study.html", context)
 
-def problem(request, subject_id, problem_id):
-    problem = Problem.objects.get(id=problem_id)
-    context = {"subject_id": subject_id, "problem": problem}
-    return render(request, "estudio_mate/answer.html", context)
-
 def solutions(request, subject_id, problem_id):
-    return render(request, "estudio_mate/answer.html", {"answers": ProblemUpload})
+    solutions = Solution.objects.all()
+    problem = Problem.objects.get(id=problem_id)
+    context = {"solutions": solutions, "problem": problem, "subject_id": subject_id}
+    return render(request, "estudio_mate/answer.html", context)
 
 @login_required(login_url='/accounts/login/')
 def upload_problem(request, subject_id, problem_id):
     if request.method == 'POST':
-        form = ProblemUpload(request.POST, request.FILES, subject_id, problem_id)
-        if form.is_valid():
-            form.save()
-            handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/subject_id/problems/problem_id/')
-    else:
-        form = ProblemUpload()
-    return render(request, 'estudio_mate/submit.html', {'form': form})
+        uploaded_file = request.FILES['solution']
+        form = Solution(problem=problem_id, solution_file=uploaded_file)
+        form.save()
+        return HttpResponseRedirect(f'/{subject_id}/problems/{problem_id}/')
+    return render(request, 'estudio_mate/submit.html')
+
+@login_required(login_url='/accounts/login/')
+def logged_index(request):
+    subjects = Subject.objects.all()
+    context = {"subjects": subjects}
+    return render(request, "estudio_mate/index.html", context)
 

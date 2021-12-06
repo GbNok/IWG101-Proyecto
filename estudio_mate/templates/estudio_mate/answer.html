@@ -1,11 +1,30 @@
 {% extends "estudio_mate/base.html" %}
 {% block content %}
+
 <div> 
     <h3 style="color :white" >problema </h1> <br>
     <img src="/static/estudio_mate/images/problems/{{problem}}.png">
 </div>
+<br>
 
-    <div>
-        <a class="btn btn-danger text-light" href="/{{subject_id}}/problems/{{problem.id}}/submit/"> subir desarrollo </a>
-    </div>
-    {% endblock %}
+
+{% if solutions %}
+
+    {% for solution in solutions %}
+        <div class="card bg-secondary mx-auto" style="width: 40rem">
+            <img class="mx-auto" src="{{solution.solution_file.url}}" style="width:30rem; height: auto;">
+        </div>
+        <br>
+    {% endfor %}
+
+{% else %}
+    <h1 class="text-light"> No soluciones </h1>
+{% endif %}
+
+<br>
+
+<div>
+    <a class="btn btn-danger text-light" href="/{{subject_id}}/problems/{{problem.id}}/submit"> subir desarrollo </a>
+</div>
+
+{% endblock %}
