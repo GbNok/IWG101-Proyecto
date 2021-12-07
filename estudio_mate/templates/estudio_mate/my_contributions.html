@@ -1,0 +1,18 @@
+{% extends "estudio_mate/base.html" %}
+{% block content %}
+
+<div class="row gy-5" style="margin-top: 12px;">
+    <div class="col">
+
+    {% for solution in solutions %}
+        <div class="card bg-secondary mx-auto" style="width: 40rem">
+            <h3 class="cart-title"> Pregunta #{{solution.problem.id}}</h3>
+            <img src="/static/estudio_mate/images/problems/{{solution.problem}}.png" >
+            <h4 class="cart-title" > Solucion</h4>
+            <img class="mx-auto" src="{{solution.solution_file.url}}" style="width:30rem; height: auto;">
+        </div>
+    </div>
+    </div>
+
+{% endfor %}
+{% endblock %}
