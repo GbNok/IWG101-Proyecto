@@ -8,6 +8,10 @@
 {% endblock %}
 
 {% block content %}
+<body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/static/estudio_mate/images/bg_main.jpg'); 
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;">
 
   {% if form.errors and not form.non_field_errors %}
     <p class="errornote">
@@ -39,7 +43,7 @@
 
     {% if microsoft_login_enabled %}
       <div class="center">
-        <p>{% trans 'Log in with' %}</p>
+        <p>{% trans 'Iniciar sesion con' %}</p>
         <div class="container">
           <div>
             <button id="microsoft-login" class="button" type="button">Outlook @usm.cl</button>
@@ -78,4 +82,5 @@
                               });
     </script>
   {% endif %}
+</body>
 {% endblock %}
