@@ -7,6 +7,11 @@
   {{ form.media }}
 {% endblock %}
 
+{% block title %}Iniciar sesión {% endblock %}
+
+{% block branding %}
+<h1 id="site-name"> Iniciar sesión</h1>
+{% endblock %}
 {% block content %}
 <body style="background: linear-gradient(rgba(47, 23, 15, 0.65), rgba(47, 23, 15, 0.65)), url('/static/estudio_mate/images/bg_main.jpg'); 
   background-attachment: fixed;
@@ -43,7 +48,7 @@
 
     {% if microsoft_login_enabled %}
       <div class="center">
-        <p>{% trans 'Iniciar sesion con' %}</p>
+        <p>{% trans 'Con' %}</p>
         <div class="container">
           <div>
             <button id="microsoft-login" class="button" type="button">Outlook @usm.cl</button>

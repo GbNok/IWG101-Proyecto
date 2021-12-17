@@ -9,15 +9,13 @@ class Subject(models.Model):
 
 class Problem(models.Model):
     statement = models.CharField(max_length=200)
-    def __str__(self):
-        return self.statement
-
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
     answer = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.statement
+
 class Solution(models.Model):
     problem = models.ForeignKey(Problem, on_delete=models.CASCADE)
-    solution_file = models.FileField()
-    def __str__(self):
-        return self.problem
+    solution_file = models.FileField()   
     user = models.ForeignKey(User, on_delete=models.CASCADE)

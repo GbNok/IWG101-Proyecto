@@ -13,6 +13,7 @@
     <meta name="theme-color" content="#111111" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#eeeeee" media="(prefers-color-scheme: dark)">
 
+    <link rel="icon" href="/static/estudio_mate/images/wot.png">
     <title>Estudios Mate</title>
 </head>
 
@@ -40,7 +41,7 @@
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     {{ request.user.get_full_name }}
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="navbarDropdownMenuLink">
                                     <li><a class="dropdown-item" href="{% url 'my_contributions' %}">Mis Contribuciones</a></li>
                                     <li><a class="dropdown-item" href="{% url 'logout' %}"> Cerrar sesion </a></li>
                                 </ul>

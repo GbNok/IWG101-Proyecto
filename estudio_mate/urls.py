@@ -9,6 +9,6 @@ urlpatterns = [
     path("<int:subject_id>/problems/<int:problem_id>/", views.solutions, name="answers"),
     path("<int:subject_id>/problems/<int:problem_id>/submit/", views.upload_problem, name="problem_upload"),
     path("my-contributions/", views.my_contributions, name="my_contributions" ),
-    path('accounts/login/', auth_views.LoginView.as_view()),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name="registration/login.html")),
     path('accounts/logout/', auth_views.LogoutView.as_view(), name="logout")
 ]

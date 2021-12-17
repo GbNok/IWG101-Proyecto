@@ -8,41 +8,41 @@
 
     <figure class="text-center">
         <blockquote class="blockquote">
-            <p>Bienvenido a PasaMate. <br> Te dejamos aqui opciones para que elijas las materias que necesitas estudiar. Selecciona la categoria y elige la cantidad de preguntas. Recuerda iniciar tu sesión para guardar ejercicios!</p>
+            <p>Bienvenido a PasaMate. <br> Te dejamos aqui opciones para que elijas las materias que necesitas estudiar. Selecciona la categoria y elige la cantidad de preguntas.</p>
         </blockquote>
       </figure>
 
     <br>
-    <div class="row g-5">{% for subject in subjects %}
-        <div class="col">
-            <div class="card bg-secondary" style="width: 18rem; height: auto;">
-                <!--testeo cambio de color -->
-                <img src="/static/estudio_mate/images/subjectP/{{ subject.title }}.png" class="card-img-top">
-                <div class="card-body">
-                    <h4 style="text-align: center;" class="card-title"> {{subject.title}} </h4>
-                    <p style="text-align: center;">
-                        <a class="btn btn-danger" data-bs-toggle="collapse" href="#{{subject}}" role="button" aria-expanded="false" aria-controls="collapseExample">
-                            Seleccionar
-                        </a>
-                    </p>
-                    <div class="collapse" id="{{subject}}" style="width: 250px; text-align: center;">
-                        <form action="/{{subject.id}}/" method="get"> {% csrf_token %}
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="form-floating">
-                                        <input type="text" name="e" id="preguntas" class="form-control" placeholder="10">
-                                        <label for="preguntas">Número de ejercicios</label>
+        <div class="row g-5">{% for subject in subjects %}
+            <div class="col">
+                <div class="card bg-secondary" style="width: 18rem; height: auto;">
+                    <!--testeo cambio de color -->
+                    <img src="/static/estudio_mate/images/subjectP/{{ subject.title }}.png" class="card-img-top">
+                    <div class="card-body">
+                        <h4 style="text-align: center;" class="card-title"> {{subject.title}} </h4>
+                        <p style="text-align: center;">
+                            <a class="btn btn-danger" data-bs-toggle="collapse" href="#{{subject}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Seleccionar
+                            </a>
+                        </p>
+                        <div class="collapse" id="{{subject}}" style="width: 250px; text-align: center;">
+                            <form action="/{{subject.id}}/" method="get"> {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" name="e" id="preguntas" class="form-control" placeholder="10">
+                                            <label for="preguntas">Número de ejercicios</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <button class="btn btn-danger" type="submit">Estudiar</button>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <button class="btn btn-danger" type="submit">Estudiar</button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     {% endfor %}</div>
